@@ -9,12 +9,23 @@ const contactsSlice = createSlice({
   },
   reducers: {
     addContact: (state, action) => {
-      return { ...state, items: [...state.items, action.payload] };
+      return {
+        ...state,
+        contacts: {
+          ...state.contacts,
+          items: [...state.contacts.items, action.payload],
+        },
+      };
     },
     deleteContact: (state, action) => {
       return {
         ...state,
-        items: state.items.filter((contact) => contact.id !== action.payload),
+        contacts: {
+          ...state.contacts,
+          items: state.contacts.items.filter(
+            (contact) => contact.id !== action.payload
+          ),
+        },
       };
     },
   },
